@@ -7,6 +7,11 @@ client = commands.Bot(command_prefix='.')
 async def on_ready():
     print('We have logged in as {0.user}'.format(client))
 
+@client.event
+async def on_command_error(ctx,error):
+    if isinstance(error, command.errors.CheckFailure):
+        await ctx.send('Nem elég erős a szereped vérem, kérjé magad mellé egy admint')
+
 @client.command()
 async def hello(ctx):
         await ctx.send('Hello!')
@@ -23,5 +28,12 @@ async def on_member_join(member):
     await member.dm_channel.send(
         'Szeva cigó, kössz hogy betoppantál a szerverre'
     )
+
+
+@client.command()
+@command.has_role('poller')
+async def strawpoll(ctx):
+
+
 
 client.run('NzQwMjQ0Mzc5MzkzOTgyNDk2.XymMTQ.Xn2mNyXox1i_Cmaer9fAwXawaGs')
