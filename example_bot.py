@@ -33,7 +33,12 @@ async def on_member_join(member):
 @client.command()
 @command.has_role('poller')
 async def strawpoll(ctx):
-
-
+    await ctx.send('What is the debate about?')
+    # reading in the message
+    await ctx.send('What is the first option?')
+    # reading in the first option
+    await ctx.send('What is the second option?')
+    # reading in the second option
+    # await ctx.send()
 
 client.run('NzQwMjQ0Mzc5MzkzOTgyNDk2.XymMTQ.Xn2mNyXox1i_Cmaer9fAwXawaGs')
