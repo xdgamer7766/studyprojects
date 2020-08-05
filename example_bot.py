@@ -13,8 +13,8 @@ async def hello(ctx):
 
 @client.event
 async def on_message(ctx):
-    if 'ora' in ctx.content:
-        emoji = '\N{EYES}'
+    if 'bella ciao' in ctx.content.lower():
+        emoji = 'dali:712598298745241670'
         await ctx.add_reaction(emoji)
 
 @client.event
