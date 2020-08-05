@@ -34,11 +34,14 @@ async def on_member_join(member):
 @command.has_role('poller')
 async def strawpoll(ctx):
     await ctx.send('What is the debate about?')
-    # reading in the message
+    question = await client.wait_for('message', check=check)
     await ctx.send('What is the first option?')
-    # reading in the first option
+    option1 = await client.wait_for('message', check=check)
     await ctx.send('What is the second option?')
-    # reading in the second option
-    # await ctx.send()
+    option2 = await client.wait_for('message', check=check)
+    await ctx.send(f'{question}\n\t{option1}:\N{THUMBS UP SIGN}\n\t{option2}:\N{THUMBS DOWN SIGN}')
+    emoji1 = '\N{THUMBS UP SIGN}'
+    emoji2 = '\N{THUMBS DOWN SIGN}'
+    await ctx.add_reaction(emoji1,emoji2)
 
 client.run('NzQwMjQ0Mzc5MzkzOTgyNDk2.XymMTQ.Xn2mNyXox1i_Cmaer9fAwXawaGs')
