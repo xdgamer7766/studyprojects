@@ -9,18 +9,18 @@ async def on_ready():
 
 @client.event
 async def on_command_error(ctx,error):
-    if isinstance(error, command.errors.CheckFailure):
+    if isinstance(error, commands.errors.CheckFailure):
         await ctx.send('Nem elég erős a szereped vérem, kérjé magad mellé egy admint')
 
 @client.command()
 async def hello(ctx):
         await ctx.send('Hello!')
 
-@client.event
-async def on_message(ctx):
-    if 'bella ciao' in ctx.content.lower():
-        emoji = 'dali:712598298745241670'
-        await ctx.add_reaction(emoji)
+#@client.event
+#async def on_message(ctx):
+#    if 'bella ciao' in ctx.content.lower():
+#        emoji = 'dali:712598298745241670'
+#        await ctx.add_reaction(emoji)
 
 @client.event
 async def on_member_join(member):
@@ -34,12 +34,16 @@ async def on_member_join(member):
 @commands.has_role('poller')
 async def strawpoll(ctx):
     await ctx.send('What is the debate about?')
-    question = await client.wait_for('message', check=check)
+    question = await client.wait_for('message')
     await ctx.send('What is the first option?')
-    option1 = await client.wait_for('message', check=check)
+    option1 = await client.wait_for('message')
     await ctx.send('What is the second option?')
-    option2 = await client.wait_for('message', check=check)
-    await ctx.send(f'{question}\n\t{option1}:\N{THUMBS UP SIGN}\n\t{option2}:\N{THUMBS DOWN SIGN}')
+    option2 = await client.wait_for('message')
+    msg.discord.Embed.add_field(question)
+    msg.discord.Embed.add_field(f'\n\t{option1}:\N{THUMBS UP SIGN}')
+    msg.discord.Embed.add_field(f'\n\t{option2}:\N{THUMBS DOWN SIGN}')
+    #discord.Embed.add_field((f'{question}\n\t{option1}:\N{THUMBS UP SIGN}\n\t{option2}:\N{THUMBS DOWN SIGN}'))
+    await ctx.send(msg)
     emoji1 = '\N{THUMBS UP SIGN}'
     emoji2 = '\N{THUMBS DOWN SIGN}'
     await ctx.add_reaction(emoji1,emoji2)
