@@ -12,6 +12,12 @@ async def hello(ctx):
         await ctx.send('Hello!')
 
 @client.event
+async def on_message(ctx):
+    if 'ora' in ctx.content:
+        emoji = '\N{EYES}'
+        await ctx.add_reaction(emoji)
+
+@client.event
 async def on_member_join(member):
     await member.create_dm()
     await member.dm_channel.send(
