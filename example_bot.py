@@ -45,12 +45,9 @@ async def strawpoll(ctx):
 
     await ctx.send('What is the first option?')
     option1 = await client.wait_for('message')
-    realoption1 = option1.content
-    await ctx.send(realoption1)
-    embed.add_field(name=realoption1,value='',inline=FALSE)
-    await ctx.send(embed=embed)
+    await ctx.send(option1.content)
+    embed.add_field(name=option1.content,value='',inline=FALSE)
     embed.add_field(name='',value=':\N{THUMBS UP SIGN}',inline=TRUE,)
-    await ctx.send(embed=embed)
     
     await ctx.send('What is the second option?')
     option2 = await client.wait_for('message')
