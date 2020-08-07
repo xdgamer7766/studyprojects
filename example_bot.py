@@ -35,15 +35,14 @@ async def on_member_join(member):
 async def strawpoll(ctx):
     await ctx.send('What is the debate about?')
     question = await client.wait_for('message')
+    msg=discord.Embed(title=(question),color=green)
     await ctx.send('What is the first option?')
     option1 = await client.wait_for('message')
+    msg.add_field(name='',value=f'\n\t{option1}:\N{THUMBS UP SIGN}',inline=FALSE)
     await ctx.send('What is the second option?')
     option2 = await client.wait_for('message')
-    msg.discord.Embed.add_field(question)
-    msg.discord.Embed.add_field(f'\n\t{option1}:\N{THUMBS UP SIGN}')
-    msg.discord.Embed.add_field(f'\n\t{option2}:\N{THUMBS DOWN SIGN}')
-    #discord.Embed.add_field((f'{question}\n\t{option1}:\N{THUMBS UP SIGN}\n\t{option2}:\N{THUMBS DOWN SIGN}'))
-    await ctx.send(msg)
+    msg.add_field(name='',value=f'\n\t{option2}:\N{THUMBS DOWN SIGN}',inline=FALSE)
+    await ctx.send(embed=msg)
     emoji1 = '\N{THUMBS UP SIGN}'
     emoji2 = '\N{THUMBS DOWN SIGN}'
     await ctx.add_reaction(emoji1,emoji2)
