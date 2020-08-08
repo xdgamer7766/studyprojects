@@ -37,27 +37,27 @@ async def strawpoll(ctx):
     await ctx.send('What is the debate about?')
     question = await client.wait_for('message')
     embed=discord.Embed(
-        title=question.content,
-        description='hogy van?'
+        title=question,
+        description='hogy van?',
+        color=discord.Colour.blue()
         )
-    
-    await ctx.send(embed=embed)
 
     await ctx.send('What is the first option?')
     option1 = await client.wait_for('message')
-    await ctx.send(option1.content)
-    embed.add_field(name=option1.content,value='',inline=FALSE)
-    embed.add_field(name='',value=':\N{THUMBS UP SIGN}',inline=TRUE,)
+    #await ctx.send(option1.content)
+    #embed.add_field(name=option1.content,value='',inline=False)
+    #embed.add_field(name='cunt',value='cunt',inline=True)
     
     await ctx.send('What is the second option?')
     option2 = await client.wait_for('message')
-    embed.add_field(name='',value=f'{option2.content}:\N{THUMBS DOWN SIGN}',inline=FALSE)
+    #&embed.add_field(name='',value=f'{option2.content}',inline=False)
     
-    await ctx.send(embed=embed)
+    a = await ctx.send(embed=embed)
     
     emoji1 = '\N{THUMBS UP SIGN}'
     emoji2 = '\N{THUMBS DOWN SIGN}'
-    await ctx.add_reaction(emoji1,emoji2)
+    #await a.add_reaction(emoji1)
+    #await a.add_reaction(emoji2)
 
 
 client.run('NzQwMjQ0Mzc5MzkzOTgyNDk2.XymMTQ.Xn2mNyXox1i_Cmaer9fAwXawaGs')
