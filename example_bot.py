@@ -37,27 +37,25 @@ async def strawpoll(ctx):
     await ctx.send('What is the debate about?')
     question = await client.wait_for('message')
     embed=discord.Embed(
-        title=question,
+        title=question.content,
         description='hogy van?',
         color=discord.Colour.blue()
         )
 
     await ctx.send('What is the first option?')
     option1 = await client.wait_for('message')
-    #await ctx.send(option1.content)
-    #embed.add_field(name=option1.content,value='',inline=False)
-    #embed.add_field(name='cunt',value='cunt',inline=True)
+    embed.add_field(name='\N{THUMBS UP SIGN}',value=option1.content,inline=True)
     
     await ctx.send('What is the second option?')
     option2 = await client.wait_for('message')
-    #&embed.add_field(name='',value=f'{option2.content}',inline=False)
+    embed.add_field(name='\N{THUMBS DOWN SIGN}',value=option2.content,inline=True)
     
     a = await ctx.send(embed=embed)
     
     emoji1 = '\N{THUMBS UP SIGN}'
     emoji2 = '\N{THUMBS DOWN SIGN}'
-    #await a.add_reaction(emoji1)
-    #await a.add_reaction(emoji2)
+    await a.add_reaction(emoji1)
+    await a.add_reaction(emoji2)
 
 
 client.run('NzQwMjQ0Mzc5MzkzOTgyNDk2.XymMTQ.Xn2mNyXox1i_Cmaer9fAwXawaGs')
